@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+.app {
+  margin: 0;
+  background-image: url(/public/background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  color: #d1e0e0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sticky-navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 10px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ant-menu-title-content {
+  color: #d1e0e0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.profile-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.profile-image {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-image: url(/public/Capture.PNG);
+  background-size: cover;
+  background-position: center;
+  animation: bounce 2s infinite;
 }
 
-@keyframes App-logo-spin {
+.animatethisfont {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 900;
+  font-size: xx-large;
+  white-space: nowrap;
+  color: #d1e0e0;
+  border-right: 2px solid;
+  display: inline-block;
+  overflow: hidden;
+  animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+}
+
+.paragraphStyle {
+  font-family: "Rajdhani", sans-serif;
+  color: #d1e0e0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+@keyframes typing {
   from {
-    transform: rotate(0deg);
+    width: 5%;
   }
   to {
-    transform: rotate(360deg);
+    width: 30%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
   }
 }
