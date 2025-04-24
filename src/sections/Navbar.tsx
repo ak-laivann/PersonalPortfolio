@@ -8,29 +8,15 @@ import {
   ApiTwoTone,
 } from "@ant-design/icons";
 import { Menu, MenuProps } from "antd";
-import { AntdIconProps } from "@ant-design/icons/lib/components/AntdIcon";
+import { CustomIcon } from "../components";
 
 type MenuItem = Required<MenuProps>["items"][number];
-
-const CustomIcon = (props: {
-  icon: React.ForwardRefExoticComponent<
-    Omit<AntdIconProps, "ref"> & React.RefAttributes<HTMLSpanElement>
-  >;
-  color?: string;
-}) => {
-  return (
-    <props.icon
-      style={{ fontSize: "25px", color: props.color }}
-      twoToneColor={props.color}
-    />
-  );
-};
 
 const items: MenuItem[] = [
   {
     label: "Profile",
     key: "profile",
-    icon: <CustomIcon icon={UserOutlined} color="#d1e0e0" />,
+    icon: <CustomIcon icon={UserOutlined} color="red" />,
   },
   {
     label: "Experience",
@@ -62,12 +48,22 @@ const items: MenuItem[] = [
 export const Navbar = () => {
   const [current, setCurrent] = useState("profile");
 
+  const handleMenuClick: MenuProps["onClick"] = (e) => {
+    setCurrent(e.key);
+
+    const targetElement = document.getElementById(e.key);
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <Menu
       className="sticky-navbar"
-      onClick={(e) => {
-        setCurrent(e.key);
-      }}
+      onClick={handleMenuClick}
       selectedKeys={[current]}
       mode="horizontal"
       items={items}
@@ -79,7 +75,7 @@ export const Navbar = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "end",
-        color: "#d1e0e0",
+        color: "#fff",
       }}
     />
   );
